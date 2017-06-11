@@ -37,7 +37,7 @@ class Home extends Component {
          }
          else 
        {
-          Actions.blank();
+          Alert.alert("Data Berhasil Tersimpan");
         }  
         
       })
@@ -59,21 +59,21 @@ class Home extends Component {
         <Content>
           <Form>
             <Item floatingLabel>
-            <Label>Nama</Label>
+            <Label>Username</Label>
               <Input 
                 onChangeText={(e) => this.setState({ username: e })} 
                 text = {this.state.username}
               />
             </Item>
             <Item floatingLabel>
-            <Label>Alamat</Label>
+            <Label>Password</Label>
               <Input 
                 onChangeText={(e) => this.setState({ pass: e })} 
                 text = {this.state.pass}
               />
             </Item>
           </Form>
-          <Button primary style={styles.confirm} onPress={() => this.onSave()}><Text> Simpan </Text></Button>
+          <Button primary style={styles.confirm} onPress={() => this.onSave()}><Text> Save </Text></Button>
         </Content>
       </Container>
     );
