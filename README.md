@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 ## Native Starter Kit v6.1.0
 
@@ -171,3 +172,6 @@ Note: If you are building Native Starter Kit for first time on your system, plea
 For apps with more advance designs, please visit **[NativeBase Market](https://market.nativebase.io/)**.
 # tugasSendData
 # tugasSendData
+=======
+# TugasSentData
+>>>>>>> 47ecdd2fdda37000d0c4bf607c46e4dc8dcda7d2
