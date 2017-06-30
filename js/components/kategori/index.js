@@ -1,7 +1,7 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Content, Text, ListItem, Icon } from 'native-base';
+import { Content, Text, ListItem } from 'native-base';
 import { Actions } from 'react-native-router-flux';
 
 import { closeDrawer } from '../../actions/drawer';
@@ -9,7 +9,7 @@ import { setIndex } from '../../actions/list';
 
 import styles from './style';
 
-class SideBar extends Component {
+class Kategori extends Component {
 
   static propTypes = {
     // setIndex: React.PropTypes.func,
@@ -24,17 +24,14 @@ class SideBar extends Component {
   render() {
     return (
       <Content style={styles.sidebar} >
-        <ListItem button onPress={() => { Actions.login(); this.props.closeDrawer(); }} >
-        <Icon active name="flame" />
-          <Text>Logout</Text>
+        <ListItem button onPress={() => { Actions.wc(); this.props.closeDrawer(); }} >
+          <Text>Sedot WC</Text>
         </ListItem>
-        <ListItem button onPress={() => { Actions.blank(); this.props.closeDrawer(); }} >
-          <Icon active name="flask" />
-          <Text>Jasa</Text>
+        <ListItem button onPress={() => { Actions.ac(); this.props.closeDrawer(); }} >
+          <Text>Service AC</Text>
         </ListItem>
-         <ListItem button onPress={() => { Actions.kategori(); this.props.closeDrawer(); }} >
-           <Icon active name="cart" />
-          <Text>Buka Toko</Text>
+         <ListItem button onPress={() => { Actions.cs(); this.props.closeDrawer(); }} >
+          <Text>Cleaning Service</Text>
         </ListItem>
       </Content>
     );
@@ -48,4 +45,4 @@ function bindAction(dispatch) {
   };
 }
 
-export default connect(null, bindAction)(SideBar);
+export default connect(null, bindAction)(Kategori);

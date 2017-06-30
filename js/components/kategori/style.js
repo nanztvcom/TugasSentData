@@ -9,7 +9,6 @@ export default {
     padding: 10,
     paddingRight: 0,
     paddingTop: 30,
-    backgroundColor: '#81D4FA',
-
+    backgroundColor: '#fff',
   },
 };

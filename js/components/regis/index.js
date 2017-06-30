@@ -7,12 +7,12 @@ import { Container, Header, Title, Content, Text, Button, Icon, Left, Body, Righ
 import { Grid, Row } from 'react-native-easy-grid';
 import { setIndex } from '../../actions/list';
 import { openDrawer } from '../../actions/drawer';
-import styles from './styles';
+import styles from './style';
 
 var SERVER_LOGIN_URL = 'http://mhs.rey1024.com/1415051002/addKategori.php';
 
 
-class Home extends Component {
+class Regis extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
@@ -22,8 +22,10 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      pass: "",
+      email: "",
+      password1: "",
+      password:"",
+      tlp: "",
     };
   }
 
@@ -33,11 +35,12 @@ class Home extends Component {
       .then((responseData) => {
         var id = responseData.id;
         if (id === -1) {
-          Alert.alert("Data ada yang salah");
+          Alert.alert("Fail to Input");
          }
          else 
        {
-          Alert.alert("Data Berhasil Tersimpan");
+         Alert.alert("Registrasi sukses , Silahkan Login");
+          Actions.login();
         }  
         
       })
@@ -51,7 +54,7 @@ class Home extends Component {
       <Container style={styles.container}>
         <Header>
           <Body>
-            <Title>{(this.props.name) ? this.props.name : 'Regitrasi'}</Title>
+            <Title>{(this.props.name) ? this.props.name : 'Registrasi'}</Title>
           </Body>
 
         </Header>
@@ -62,25 +65,37 @@ class Home extends Component {
             <Label>Email</Label>
               <Input 
                 onChangeText={(e) => this.setState({ email: e })} 
+                 keyboardType={'email-address'}
                 text = {this.state.email}
               />
             </Item>
             <Item floatingLabel>
-            <Label>Password</Label>
+            <Label> Masukkan Password</Label>
+              <Input 
+                onChangeText={(e) => this.setState({ password1: e })} 
+                secureTextEntry
+                text = {this.state.password1}
+              />
+            </Item>
+            <Item floatingLabel>
+            <Label> Masukkan Password Kembali</Label>
               <Input 
                 onChangeText={(e) => this.setState({ password: e })} 
+                secureTextEntry
+
                 text = {this.state.password}
               />
             </Item>
-             <Item floatingLabel>
-            <Label>No Telpon</Label>
+            <Item floatingLabel>
+            <Label> Masukkan No-Telp</Label>
               <Input 
                 onChangeText={(e) => this.setState({ tlp: e })} 
+                 keyboardType={'phone-pad'}
                 text = {this.state.tlp}
               />
             </Item>
           </Form>
-          <Button primary style={styles.confirm} onPress={() => this.onSave()}><Text> Save </Text></Button>
+          <Button primary style={styles.confirm} onPress={() => this.onSave()}><Text> Simpan </Text></Button>
         </Content>
       </Container>
     );
@@ -98,4 +113,4 @@ const mapStateToProps = state => ({
   list: state.list.list,
 });
 
-export default connect(mapStateToProps, bindAction)(Home);
+export default connect(mapStateToProps, bindAction)(Regis);

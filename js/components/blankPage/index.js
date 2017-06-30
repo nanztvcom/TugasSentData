@@ -1,14 +1,15 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, ListView, TextInput } from 'react-native';
+import { View, ListView, TextInput, Image } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { Container, Header, Title, Content, Text, Button, Icon, Left, Right, Body, Item, List, ListItem, Label  } from 'native-base';
 
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
+const basketIcon = require('./service.png');
+var URL="http://mhs.rey1024.com/1415051002/SendingData/listview.php";
 
-var URL="http://mhs.rey1024.com/1415051095/tugasSendData/view.php";
 
 class BlankPage extends Component {
 
@@ -44,8 +45,21 @@ class BlankPage extends Component {
     return (
       <ListItem>
         <Body>
-          <Text>{record.nama}</Text>
-          <Text>{record.alamat}</Text>
+         <View style={styles.row}>
+      <View style={styles.iconContainer}>
+          <Image source={basketIcon} style={styles.icon} />
+        </View>
+        <View style={styles.info}>
+          <Text style={styles.items}>{record.nama_des}</Text>
+          <Text style={styles.address}>{record.alamat}</Text>
+          <Text style={styles.address}>HP : {record.telp1}</Text>
+          <Text style={styles.address}>HP : {record.telp2}</Text>
+        </View>
+        <View style={styles.total}>
+          <Text style={styles.date}>{record.nama_kategori}</Text>
+            <Button primary style={styles.price} onPress={() => { Actions.peta(); }}><Text> Detail </Text></Button>
+        </View>
+      </View>
         </Body>
       </ListItem>
     );
@@ -57,7 +71,7 @@ class BlankPage extends Component {
       <Container style={styles.container}>
         <Header>
           <Body>
-            <Title>{(this.props.name) ? this.props.name : 'List Data'}</Title>
+            <Title>{(this.props.name) ? this.props.name : 'List Jasa'}</Title>
           </Body>
 
         </Header>

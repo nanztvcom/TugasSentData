@@ -1,14 +1,14 @@
 <?php 
 	$mysqli = new mysqli("mhs.rey1024.com","u7039630_mhspti1", "akuBisa","u7039630_mhspti17");
 
-    $username=$_GET['username'];
+    $email=$_GET['email'];
     $password=$_GET['password'];
 
     
 
 $id = array();
 
-if($result = $mysqli->query("SELECT `id_user` FROM `rk_user` WHERE username='$username' AND password='$password'")) {
+if($result = $mysqli->query("SELECT `id_user` FROM `j_user` WHERE email='$email' AND password='$password'")) {
 
 if (mysqli_num_rows($result)>0){
 

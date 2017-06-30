@@ -12,7 +12,7 @@ export default {
     bottom: 0,
     left: 0,
     right: 0,
-    backgroundColor: '#FBFAFA',
+    backgroundColor: '#00BCD4',
   },
   shadow: {
     flex: 1,
@@ -31,8 +31,16 @@ export default {
   input: {
     marginBottom: 20,
   },
-  btn: {
-    marginTop: 20,
+  btn1: {
+    marginTop: 5,
+    marginLeft: 250,
     alignSelf: 'center',
+    backgroundColor: '#00ACC1',
+  },
+  btn: {
+    marginTop: -45,
+    alignSelf: 'center',
+    marginLeft: 60,
+    backgroundColor: '#00ACC1',
   },
 };

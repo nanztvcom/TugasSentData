@@ -9,10 +9,10 @@ import { setIndex } from '../../actions/list';
 import { openDrawer } from '../../actions/drawer';
 import styles from './styles';
 
-var SERVER_LOGIN_URL = 'http://mhs.rey1024.com/1415051002/addKategori.php';
+var SERVER_LOGIN_URL = 'http://mhs.rey1024.com/1415051002/addWC.php';
 
 
-class Home extends Component {
+class SedotWC extends Component {
 
   static propTypes = {
     name: React.PropTypes.string,
@@ -22,13 +22,15 @@ class Home extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: "",
-      pass: "",
+      nama_des: "",
+      alamat: "",
+      telp1: "",
+      telp2: "",
     };
   }
 
   onSave() {
-    fetch(SERVER_LOGIN_URL + '?email=' + this.state.email + '&password=' + this.state.password + '&tlp=' + this.state.tlp)
+    fetch(SERVER_LOGIN_URL + '?nama_des=' + this.state.nama_des + '&alamat=' + this.state.alamat + '&telp1=' + this.state.telp1  + '&telp2=' + this.state.telp2)
       .then((response) => response.json())
       .then((responseData) => {
         var id = responseData.id;
@@ -38,6 +40,7 @@ class Home extends Component {
          else 
        {
           Alert.alert("Data Berhasil Tersimpan");
+          Actions.sideBar();
         }  
         
       })
@@ -51,7 +54,7 @@ class Home extends Component {
       <Container style={styles.container}>
         <Header>
           <Body>
-            <Title>{(this.props.name) ? this.props.name : 'Regitrasi'}</Title>
+            <Title>{(this.props.name) ? this.props.name : 'Buka Jasa'}</Title>
           </Body>
 
         </Header>
@@ -59,28 +62,35 @@ class Home extends Component {
         <Content>
           <Form>
             <Item floatingLabel>
-            <Label>Email</Label>
+            <Label>Nama Penjasa</Label>
               <Input 
-                onChangeText={(e) => this.setState({ email: e })} 
-                text = {this.state.email}
+                onChangeText={(e) => this.setState({ nama_des: e })} 
+                text = {this.state.nama_des}
               />
             </Item>
             <Item floatingLabel>
-            <Label>Password</Label>
+            <Label>Alamat</Label>
               <Input 
-                onChangeText={(e) => this.setState({ password: e })} 
-                text = {this.state.password}
+                onChangeText={(e) => this.setState({ alamat: e })} 
+                text = {this.state.alamat}
               />
             </Item>
              <Item floatingLabel>
-            <Label>No Telpon</Label>
+            <Label>No Telpon Utama</Label>
               <Input 
-                onChangeText={(e) => this.setState({ tlp: e })} 
-                text = {this.state.tlp}
+                onChangeText={(e) => this.setState({ telp1: e })} 
+                text = {this.state.telp1}
+              />
+            </Item>
+               <Item floatingLabel>
+            <Label>No Telpon Cadangan</Label>
+              <Input 
+                onChangeText={(e) => this.setState({ telp2: e })} 
+                text = {this.state.telp2}
               />
             </Item>
           </Form>
-          <Button primary style={styles.confirm} onPress={() => this.onSave()}><Text> Save </Text></Button>
+          <Button primary style={styles.confirm} onPress={() => this.onSave()}><Text> Simpan </Text></Button>
         </Content>
       </Container>
     );
@@ -98,4 +108,4 @@ const mapStateToProps = state => ({
   list: state.list.list,
 });
 
-export default connect(mapStateToProps, bindAction)(Home);
+export default connect(mapStateToProps, bindAction)(SedotWC);

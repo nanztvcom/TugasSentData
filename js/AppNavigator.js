@@ -9,7 +9,15 @@ import { closeDrawer } from './actions/drawer';
 
 import Home from './components/home/';
 import BlankPage from './components/blankPage';
+import Login from './components/login';
 import SideBar from './components/sideBar';
+import SedotWC from './components/sedotwc';
+import Regis from './components/regis';
+import Kategori from './components/kategori';
+import WC from './components/addWC';
+import AC from './components/addAC';
+import CS from './components/addCS';
+import Peta from './components/webview';
 import { statusBarColor } from './themes/base-theme';
 
 
@@ -46,10 +54,26 @@ class AppNavigator extends Component {
 
   _renderScene(props) { // eslint-disable-line class-methods-use-this
     switch (props.scene.route.key) {
-      case 'home':
-        return <Home />;
+      case 'login':
+        return <Login />;
       case 'blank':
-        return <Home />;
+        return <BlankPage />;
+        case 'sideBar':
+        return <SideBar />;
+      case 'sedotwc':
+        return <SedotWC />;
+      case 'regis':
+        return <Regis />;
+      case 'kategori':
+        return <Kategori />;
+      case 'wc':
+        return <WC />;
+        case 'ac':
+        return <AC />;
+        case 'cs':
+        return <CS />;
+        case'peta':
+        return <Peta />
       default :
         return <Home />;
     }
@@ -61,7 +85,7 @@ class AppNavigator extends Component {
         ref={(ref) => { this._drawer = ref; }}
         type="overlay"
         tweenDuration={150}
-        content={<SideBar />}
+        content={<Login />}
         tapToClose
         acceptPan={false}
         onClose={() => this.closeDrawer()}
@@ -90,8 +114,17 @@ class AppNavigator extends Component {
         />
         <RouterWithRedux>
           <Scene key="root">
-            <Scene key="home" component={Home}  hideNavBar initial/>
-            <Scene key="blank" component={BlankPage} />
+            <Scene key="login" component={Login} hideNavBar initial />
+            <Scene key="blank" component={BlankPage}/>
+            <Scene key="sideBar" component={SideBar}/>
+            <Scene key="sedotwc" component={SedotWC}/>
+            <Scene key="regis" component={Regis}/>
+            <Scene key="kategori" component={Kategori}/>
+            <Scene key="wc" component={WC}/>
+            <Scene key="ac" component={AC}/>
+            <Scene key="cs" component={CS}/>
+            <Scene key="peta" component={Peta}/>
+    
           </Scene>
         </RouterWithRedux>
       </Drawer>
